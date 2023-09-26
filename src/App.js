@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
+import DarkLightToggle from './components/DarkLightToggle';
+import {useSelector} from 'react-redux'
 
 function App() {
+  const isDarkMode = useSelector((state)=>state.themea.isDarkMode)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`py-5 min-h-screen  ${isDarkMode?"bg-black":"bg-white"}`}>
+      <h1 className={`text-4xl font-bold text-center font-mono ${isDarkMode? "text-white": "text-black"}` }>Light and Dark Mode Theme Toggle</h1>
+      <DarkLightToggle/>
+   
     </div>
   );
 }
